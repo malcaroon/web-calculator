@@ -28,7 +28,7 @@ const updateScreen = () => {
         currentTextElement.textContent = currentInput;
     }
 
-    // Arrow function used inside the loop here!
+    // Arrow function used inside the loop here
     operatorButtons.forEach(button => {
         button.classList.remove('active'); 
         
@@ -143,7 +143,7 @@ const deleteLastCharacter = () => {
 };
 
 // --- CONNECT BUTTONS TO FUNCTIONS (EVENT LISTENERS) ---
-// Using arrow functions for the loops and the click events!
+// Using arrow functions for the loops and the click events
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         addNumber(button.textContent);
@@ -160,7 +160,7 @@ equalsButton.addEventListener('click', calculateResult);
 clearButton.addEventListener('click', clearCalculator);
 backspaceButton.addEventListener('click', deleteLastCharacter);
 
-// Arrow function for the keyboard event!
+// Arrow function for the keyboard event
 document.addEventListener('keydown', (event) => {
     if (event.key >= '0' && event.key <= '9' || event.key === '.') {
         addNumber(event.key);
