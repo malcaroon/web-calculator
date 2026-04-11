@@ -3,9 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Calculator Website</title>
+    
 </head>
 <body>
+
+    <main class="container">
+        <div class="calculator">
+            <div class="display" id="display">
+                <div class="previous" id="previous-operand"></div>
+                <div class="current" id="current-operand">0</div>
+            </div>
+            
+            <div class="keypad">
+                <button class="btn action-btn" id="all-clear">AC</button>
+                <button class="btn action-btn" id="backspace">⌫</button>
+                <button class="btn operator" data-operator="/">÷</button>
+                <button class="btn operator" data-operator="*">×</button>
+                
+                <button class="btn number">7</button>
+                <button class="btn number">8</button>
+                <button class="btn number">9</button>
+                <button class="btn operator" data-operator="-">−</button>
+                
+                <button class="btn number">4</button>
+                <button class="btn number">5</button>
+                <button class="btn number">6</button>
+                <button class="btn operator" data-operator="+">+</button>
+                
+                <button class="btn number">1</button>
+                <button class="btn number">2</button>
+                <button class="btn number">3</button>
+                <button class="btn equals" id="equals">=</button>
+                
+                <button class="btn number zero">0</button>
+                <button class="btn number dot">.</button>
+            </div>
+        </div>
+
+        <section class="instructions">
+    <h2>📘 User Guide</h2>
     
+    <div class="guide-content">
+        <h3>Basic Interaction</h3>
+        <ul>
+            <li><strong>Input:</strong> Click the numeric buttons (0-9) and operation buttons or use your <b>keyboard</b> to enter values.</li>
+            <li><strong>Operations:</strong> Supports standard math <strong>Addition (+)</strong>, <strong>Subtraction (−)</strong>, <strong>Multiplication (×)</strong>, and <strong>Division (÷)</strong>.</li>
+        </ul>
+        <br>
+        <h3>Advanced Display & Logic</h3>
+        <ul>
+            <li><strong>Dynamic View:</strong> Your full equation builds on the main screen in real-time. When you click <strong>=</strong> (or press <code>Enter</code>), the calculation history moves to the top line while the result stays below.</li>
+            <li><strong>Active Operator:</strong> The selected math symbol (+, −, etc.) stays highlighted until the calculation is complete.</li>
+        </ul>
+        <br>
+        <h3>Corrections & Errors</h3>
+        <ul>
+            <li><strong>Delete (⌫):</strong> Use the backspace button to remove the last character entered. This works for both numbers and math operators!</li>
+            <li><strong>All Clear (AC):</strong> Use <strong>AC</strong> (or <code>Escape</code>) to reset the entire calculator.</li>
+            <li><strong>Error Handling:</strong> The system detects invalid operations, such as dividing by zero, and displays an "Error" message.</li>
+        </ul>
+    </div>
+</section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
