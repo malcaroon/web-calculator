@@ -1,3 +1,4 @@
+        /* Base Styles */
 * {
             box-sizing: border-box;
             margin: 0;
@@ -23,7 +24,7 @@
             max-width: 400px;
             width: 100%;
         }
-
+        /* Calculator Body & Display */
         .calculator {
             background-color: #2b4e7a;
             border-radius: 20px;
@@ -58,7 +59,7 @@
             color: #ffffff;
             font-size: 2.5rem;
         }
-
+        /* Keypad & Buttons */
         .keypad {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -120,7 +121,7 @@
         .zero {
             grid-column: span 2;
         }
-
+        /* User Guide */
         .instructions {
             background-color: #ffffff;
             padding: 30px;
@@ -144,7 +145,7 @@
             list-style-position: inside;
             line-height: 1.6;
         }
-
+        /* Mobile Responsiveness */
         @media (max-width: 400px) {
             .btn {
                 font-size: 1.2rem;
