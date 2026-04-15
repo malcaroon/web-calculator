@@ -1,5 +1,5 @@
         /* Base Styles */
-* {
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -21,20 +21,24 @@
 
         .container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            flex-direction: row; 
+            align-items: flex-start; 
+            justify-content: center;
             gap: 30px;
-            max-width: 400px;
+            max-width: 900px; 
             width: 100%;
         }
+
         /* Calculator Body & Display */
         .calculator {
             background-color: #2b4e7a;
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
             width: 100%;
+            max-width: 400px; 
             padding: 20px;
             overflow: hidden;
+            flex: 1;
         }
 
         .display {
@@ -62,6 +66,7 @@
             color: #ffffff;
             font-size: 2.5rem;
         }
+
         /* Keypad & Buttons */
         .keypad {
             display: grid;
@@ -124,18 +129,20 @@
         .zero {
             grid-column: span 2;
         }
-        /* User Guide */
+
+        /* User Guide / Sidebar */
         .instructions {
             background-color: #ffffff;
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             width: 100%;
-            margin-top: 20px; /* Space between calculator and guide */
-            border-top: 5px solid #2b4e7a; /* A blue bar above the guide to match the theme */
+            max-width: 450px; 
+            border-top: 5px solid #2b4e7a;
+            flex: 1; 
         }
 
-        .instructions h2, h3 {
+        .instructions h2, .instructions h3 {
             margin-bottom: 10px;
             color: #2b4e7a;
         }
@@ -148,7 +155,18 @@
             list-style-position: inside;
             line-height: 1.6;
         }
-        /* Mobile Responsiveness */
+
+        /* Mobile Responsiveness  */
+        @media (max-width: 850px) {
+            .container {
+                flex-direction: column; 
+                align-items: center;
+            }
+            .instructions {
+                margin-top: 20px; 
+            }
+        }
+
         @media (max-width: 400px) {
             .btn {
                 font-size: 1.2rem;
