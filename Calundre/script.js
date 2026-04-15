@@ -12,7 +12,8 @@ let currentInput = '0';
 let previousInput = '';          
 let currentOperator = null;      
 let shouldResetScreen = false;   
-let equationHistory = '';        
+let equationHistory = '';  
+let previousResult = '';     
 
 // --- UPDATE THE SCREEN FUNCTION ---
 const updateScreen = () => {
@@ -28,7 +29,6 @@ const updateScreen = () => {
         currentTextElement.textContent = currentInput;
     }
 
-    // Arrow function used inside the loop here
     operatorButtons.forEach(button => {
         button.classList.remove('active'); 
         
@@ -45,6 +45,10 @@ const addNumber = (number) => {
     }
 
     if (currentInput === '0' || shouldResetScreen === true) {
+        if (shouldResetScreen === true && currentOperator === null && previousResult !== '') {
+            equationHistory = "Ans = " + previousResult;
+        }
+        
         currentInput = number;
         shouldResetScreen = false;
     } else {
@@ -60,10 +64,15 @@ const chooseOperator = (operator) => {
         calculateResult();
     }
 
+    if (currentOperator === null && previousResult !== '') {
+        equationHistory = "Ans = " + previousResult;
+    } else {
+        equationHistory = '';            
+    }
+
     previousInput = currentInput;    
     currentOperator = operator;      
     shouldResetScreen = true;        
-    equationHistory = '';            
 
     updateScreen();
 };
@@ -100,7 +109,9 @@ const calculateResult = () => {
     }
 
     equationHistory = previousInput + " " + currentOperator + " " + currentInput + " =";
-    currentInput = Math.round(total * 100000000) / 100000000;
+    
+    currentInput = (Math.round(total * 100000000) / 100000000).toString();
+    previousResult = currentInput; 
     
     currentOperator = null;
     previousInput = '';
@@ -116,6 +127,7 @@ const clearCalculator = () => {
     currentOperator = null;
     shouldResetScreen = false;
     equationHistory = '';
+    previousResult = '';
     updateScreen();
 };
 
@@ -143,7 +155,6 @@ const deleteLastCharacter = () => {
 };
 
 // --- CONNECT BUTTONS TO FUNCTIONS (EVENT LISTENERS) ---
-// Using arrow functions for the loops and the click events
 numberButtons.forEach(button => {
     button.addEventListener('click', () => {
         addNumber(button.textContent);
@@ -162,7 +173,7 @@ backspaceButton.addEventListener('click', deleteLastCharacter);
 
 // Arrow function for the keyboard event
 document.addEventListener('keydown', (event) => {
-    if (event.key >= '0' && event.key <= '9' || event.key === '.') {
+    if (/[0-9.]/.test(event.key)) {
         addNumber(event.key);
     }
     if (event.key === '=' || event.key === 'Enter') {
@@ -175,7 +186,7 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         clearCalculator();
     }
-    if (event.key === '+' || event.key === '-' || event.key === '*' || event.key === '/') {
+    if (['+', '-', '*', '/'].includes(event.key)) {
         chooseOperator(event.key);
     }
 });
